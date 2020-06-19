@@ -1,5 +1,14 @@
-# Documentation
+# contributing to WECS
 
+WECS is in very early dev phase, and we'd love an ysupport we can get.
+
+# Coding
+
+Feel fre to fork the project, play and expand upon it. Have a look at the TODO page.
+
+The current devs hang out at [this channel on discord](https://discord.com/channels/722508679118848012/722510686474731651).
+ 
+# Documentation
 
 *WECS* documentation is made of two sources:
 - a set of .md files residing in the `/manual/` folder, describing the system. and

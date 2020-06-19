@@ -9,4 +9,5 @@ Manual
    prefab
    boilerplate
    design
+   contribute
    todo
