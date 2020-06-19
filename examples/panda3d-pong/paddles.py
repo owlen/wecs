@@ -87,7 +87,7 @@ class PaddleTouchesBoundary(System):
             z = position.value.z
             size = paddle.size
 
-            if z + size  > 1:
+            if z + size > 1:
                 position.value.z = 1 - size
             elif (z - size) < -1:
                 position.value.z = -1 + size

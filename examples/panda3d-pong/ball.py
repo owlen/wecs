@@ -104,7 +104,7 @@ class BallTouchesPaddleLine(System):
                 movement.value.x *= -1
                 # Adjust up-down speed based on where the paddle was hit
                 dist_to_center = paddle_z - position.value.z
-                normalized_dist = dist_to_center / (paddle_size)
+                normalized_dist = dist_to_center / paddle_size
                 speed = abs(movement.value.x)
                 movement.value.z -= normalized_dist * speed
 
