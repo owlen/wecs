@@ -1,5 +1,6 @@
 import types
 import dataclasses
+from inspect import isclass
 
 
 class World:
@@ -373,7 +374,7 @@ class Entity:
         return "<Entity {}>".format(self._uid.name)
 
 
-class Component():
+class Component:
     """
     New components are declared like dataclasses::
 
@@ -382,12 +383,22 @@ class Component():
             my_variable: int = 0
 
     """
-    def __init__(self, unique=True):
-        self.unique = unique
+    def __init__(self, *args, **kwargs):
+        print(f"init called with {args} and {kwargs}")
+        self.cls = None
+        if args and callable(args[0]):
+            self.cls = args[0]
 
-    def __call__(self, cls):
-        cls = dataclasses.dataclass(cls, eq=False)
-        return cls
+    def __call__(self, *args, **kwargs):
+        print(f"__called__ with {args} and {kwargs}")
+        if not self.cls:
+            if callable(args[0]):
+                cls = args[0]
+            else:
+                raise Exception("bad use of Component decorator! {} isn't callable!")
+            return dataclasses.dataclass(cls, eq=False)
+        else:
+            return dataclasses.dataclass(self.cls, eq=False)
 
 
 #
