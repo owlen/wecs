@@ -7,6 +7,7 @@ import dataclasses
 # thanks to that dangling reference, the now invalid UID is still referenced.
 # Still, this smells.
 import logging
+from inspect import isclass
 
 
 class UID:
@@ -59,6 +60,8 @@ class World:
         entity = Entity(self, name=name)
         self.entities[entity._uid] = entity
         for component in components:
+            if isclass(component):
+                raise ValueError(f"{component} is a class. Did you forget the parenthesis?")
             entity.add_component(component)
         return entity
 
